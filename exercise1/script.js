@@ -7,8 +7,31 @@ Params:
 Returns:
   Emmas age in the given year. Returns -1 if the values are invalid.
 ***/
+
 function getAgeContent(year, momAge){
-  // Fill with your code <3
+
+  /*
+  Según yo hice esto para que de entrada cheque si
+  los campos están vacíos o son inválidos
+
+  if ( isNaN(year) || isNaN(age) ){
+    return -3;
+  }
+  */
+  
+  const susBY = 1993;
+  var momAge = year - susBY;
+  var emmaAge = momAge - age;
+
+  if (emmaAge < 1){
+    return -1;
+  } else if (emmaAge>100) {
+    return -2
+  } else if (isNaN(emmaAge)) { //no sirve si el primer caracter del input es un número. Ej."23ajdhshj" :(
+    return -3;
+  } else {
+    return emmaAge;
+  }
 }
 
 function showAge(){
@@ -18,7 +41,11 @@ function showAge(){
   ageEmma =  getAgeContent(year, age)
   if(ageEmma == -1){
     document.getElementById("result").innerHTML = "Emma is still just a dream.";
-  }else{
+  } else if (ageEmma == -2){
+    document.getElementById("result").innerHTML = "Apparently Emma is inmortal";
+  } else if (ageEmma == -3){
+    document.getElementById("result").innerHTML = "Empty or invalid inputs";
+  } else {
     document.getElementById("result").innerHTML = "Emma is " +ageEmma+ " years old.";
   }
 }
